@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load cache %}
+{% load thumbnail %}
+<body>
+  <main> 
+    {% block content %} 
+    <!-- класс py-5 создает отступы сверху и снизу блока -->
+    <div class="container py-5">   
+      <h1> Последние обновления на сайте </h1> 
+      {% include 'posts/includes/switcher.html' %} 
+      {% cache 20 index_page %}
+        {% for post in page_obj %}
+        <ul>
+          <li>
+            Автор: <a href="{% url 'posts:profile' post.author %}"
+            >{{ post.author.get_full_name }}</a>
+          </li>
+          <li>
+            Дата публикации: {{ post.pub_date|date:"d E Y" }}
+          </li>
+        </ul>
+        {% thumbnail post.image "2000x400" crop="center" upscale=True as im %}
+        <img class="card-img my-2" src="{{ im.url }}">
+        {% endthumbnail %}
+      <p>{{ post.text }}</p>    
+      {% if post.group %}   
+        <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+        {% endif %}
+    {% if not forloop.last %}<hr>{% endif %}
+        {% endfor %} 
+      {% endcache %}  
+        {% include 'posts/includes/paginator.html' %}
+        <!-- под последним постом нет линии -->
+      </div> 
+  {% endblock %}
+  </main>
+</body>  
