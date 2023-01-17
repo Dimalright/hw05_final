@@ -30,6 +30,3 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
-# Overview
-If you want to know what it looks like visit 
-```http://cokasqq.pythonanywhere.com/```
