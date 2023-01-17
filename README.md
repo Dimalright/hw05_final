@@ -1,3 +1,35 @@
-# hw05_final
+# YaTube
+__YaTube__ is a social network for blogs. Here you can create posts, view
+publications, comment, join groups and subscribe to other authors.
 
-[![CI](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml)
+Stack: 
+- Python==3.8
+- Django~=2.2
+- HTML5
+- CSS (Bootstrap)
+
+# Installation guide
+1. Clone the repository:
+```
+git clone <url>
+```
+2. Create and activate virtual environment:
+```
+python -m venv <env_name>
+source venv/Scripts/activate
+```
+3. Install all requirements:
+```
+pip install -r requirements.txt
+```
+4. Apply all migrations:
+```
+python manage.py migrate
+```
+5. Run the server:
+```
+python manage.py runserver
+```
+# Overview
+If you want to know what it looks like visit 
+```http://cokasqq.pythonanywhere.com/```
